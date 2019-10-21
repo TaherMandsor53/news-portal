@@ -8,7 +8,7 @@ function* fetchWeatherDetails(action) {
 		const weatherDetails = yield call(api.fetchWeatherDetails);
 		yield put({
 			type: types.WEATHER_DETAILS_SUCCESS,
-			weatherDetailsData: weatherDetails,
+			weatherDetailsData: weatherDetails.data,
 		});
 	} catch (e) {
 		yield put({ type: types.WEATHER_DETAILS_ERROR, message: e.message });

@@ -1,1 +1,3 @@
 @import './style.less';
+@import './components/home/home.less';
+@import './components/weatherDetails/weatherDetails.less';

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './main.css';
 import Main from './Main';
 import * as serviceWorker from './serviceWorker';
+import 'semantic-ui-css/semantic.min.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 ReactDOM.render(<Main />, document.getElementById('root'));
 

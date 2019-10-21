@@ -13,13 +13,10 @@ const weatherDetails = (
 				isFetching: true,
 			});
 		case types.WEATHER_DETAILS_SUCCESS:
-			return Object.assign(
-				{},
-				{
-					isFetching: false,
-					weatherDetailsData: action.weatherDetailsData,
-				},
-			);
+			return Object.assign({}, state, {
+				isFetching: false,
+				weatherDetailsData: action.weatherDetailsData,
+			});
 		case types.WEATHER_DETAILS_ERROR:
 			return Object.assign({}, state, {
 				isFetching: false,
