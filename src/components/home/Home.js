@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import WeatherDetailsContainer from '../../container/NewsDetailsContainer';
 import { headLine1, headLine2, headLine3, content1, content2, content3 } from '../../constants/constants';
-
+import NewsDetailsFilter from '../newsDetails/NewsDetailsFilter';
 class Home extends Component {
 	render() {
 		return (
@@ -46,6 +46,8 @@ class Home extends Component {
 					</Carousel>
 				</div>
 				<WeatherDetailsContainer />
+
+				<NewsDetailsFilter />
 			</div>
 		);
 	}

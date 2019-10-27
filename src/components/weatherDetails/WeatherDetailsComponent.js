@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Icon } from 'semantic-ui-react';
-import moment from 'moment';
 
 class WeatherDetailsComponent extends Component {
-	// constructor(props) {
-	// 	super(props);
-	// }
-
 	componentDidMount() {
 		const { requestWeatherDetails } = this.props;
 		requestWeatherDetails();
@@ -21,9 +16,10 @@ class WeatherDetailsComponent extends Component {
 		const temperature = weatherDetailsData.main && weatherDetailsData.main.temp;
 		const roundTemperatureVal = Math.round(temperature) + ' °C';
 		const sunRiseDetails = weatherDetailsData.sys && weatherDetailsData.sys.sunrise;
-		//const sunSetDetails = weatherDetailsData.sys && weatherDetailsData.sys.sunset;
+		const sunSetDetails = weatherDetailsData.sys && weatherDetailsData.sys.sunset;
 		console.log('Weather Details:', weatherDetailsData);
-		console.log('Sunrise:', moment(sunRiseDetails).format('HH:MM:SS'));
+		const sunriseTime = new Date(sunRiseDetails * 1000).toLocaleTimeString('en-US');
+		const sunsetTime = new Date(sunSetDetails * 1000).toLocaleTimeString('en-US');
 		return (
 			<div className="weather-details">
 				{weatherDetailsData && (
@@ -34,8 +30,8 @@ class WeatherDetailsComponent extends Component {
 							<p className="temperature-details">{roundTemperatureVal}</p>
 							<div>
 								<p>{weatherDescription}</p>
-								<p>Sunrise: </p>
-								<p>Sunset: </p>
+								<p>Sunrise: {sunriseTime}</p>
+								<p>Sunset: {' ' + sunsetTime}</p>
 							</div>
 						</Card.Content>
 					</Card>
