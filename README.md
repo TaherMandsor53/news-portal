@@ -16,4 +16,4 @@ http://localhost:3000/project/home
 
 ### `Screenshot of Applications`
 
-![Alt Text](https://github.com/TaherMandsor53/news-portal/blob/master/src/assets/news-portal-App.JPG)
+![Alt Text](https://github.com/TaherMandsor53/news-portal/blob/master/src/assets/news-portal-Home.JPG)
