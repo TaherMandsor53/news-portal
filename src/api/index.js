@@ -5,6 +5,12 @@ const fetchWeatherDetails = () => {
 	return axios.get(URL);
 };
 
+const fetchNewsDetails = () => {
+	const URL = ``;
+	return axios.get(URL);
+};
+
 export default {
 	fetchWeatherDetails,
+	fetchNewsDetails,
 };

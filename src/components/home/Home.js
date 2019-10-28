@@ -3,10 +3,24 @@ import { Carousel } from 'react-responsive-carousel';
 import WeatherDetailsContainer from '../../container/NewsDetailsContainer';
 import { headLine1, headLine2, headLine3, content1, content2, content3 } from '../../constants/constants';
 import NewsDetailsFilter from '../newsDetails/NewsDetailsFilter';
+import NewsDetailsTable from '../newsDetails/NewsDetailsTable';
+import { Segment, Icon, Label } from 'semantic-ui-react';
 class Home extends Component {
 	render() {
 		return (
 			<div>
+				<Segment>
+					<Icon name="newspaper outline" size="huge" />
+					<Label>NewsHunt</Label>
+					<div className="login-icon">
+						<Icon name="user outline" size="big" />
+						<Label className="login-label">Login</Label>
+					</div>
+					<div className="news-publish-icon">
+						<Icon name="paper plane outline" size="big" />
+						<Label className="news-publish-label">Publish News</Label>
+					</div>
+				</Segment>
 				<div className="carousel-slide">
 					<Carousel autoPlay={true} interval={5000} showArrows={false} showStatus={false} showThumbs={false}>
 						<div className="carousel-items">
@@ -46,8 +60,8 @@ class Home extends Component {
 					</Carousel>
 				</div>
 				<WeatherDetailsContainer />
-
 				<NewsDetailsFilter />
+				<NewsDetailsTable />
 			</div>
 		);
 	}
