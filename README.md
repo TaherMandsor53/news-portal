@@ -16,4 +16,14 @@ http://localhost:3000/project/home
 
 ### `Screenshot of Applications`
 
-![Alt Text](https://github.com/TaherMandsor53/news-portal/blob/master/src/assets/news-portal-Home.JPG)
+### `Home Page`
+
+![Alt Text](https://github.com/TaherMandsor53/news-portal/blob/master/src/assets/HomePage.JPG)
+
+### `Login Page`
+
+![Alt Text](https://github.com/TaherMandsor53/news-portal/blob/master/src/assets/NewsPortalLogin.JPG)
+
+### `Register Page`
+
+![Alt Text](https://github.com/TaherMandsor53/news-portal/blob/master/src/assets/NewsPortalRegister.JPG)
