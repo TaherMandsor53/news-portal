@@ -4,9 +4,27 @@ import WeatherDetailsContainer from '../../container/NewsDetailsContainer';
 import { headLine1, headLine2, headLine3, content1, content2, content3 } from '../../constants/constants';
 import NewsDetailsFilter from '../newsDetails/NewsDetailsFilter';
 import NewsDetailsTable from '../newsDetails/NewsDetailsTable';
+import LoginForm from '../loginForm/LoginForm';
 import { Segment, Icon, Label } from 'semantic-ui-react';
+
 class Home extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			onLoginBtnClick: false,
+		};
+		this.showLoginModel = this.showLoginModel.bind(this);
+		this.onCloseLoginModel = this.onCloseLoginModel.bind(this);
+	}
+	showLoginModel() {
+		this.setState({ onLoginBtnClick: true });
+	}
+
+	onCloseLoginModel() {
+		this.setState({ onLoginBtnClick: false });
+	}
 	render() {
+		const { onLoginBtnClick } = this.state;
 		return (
 			<div>
 				<Segment>
@@ -14,7 +32,9 @@ class Home extends Component {
 					<Label>NewsHunt</Label>
 					<div className="login-icon">
 						<Icon name="user outline" size="big" />
-						<Label className="login-label">Login</Label>
+						<Label className="login-label" onClick={this.showLoginModel}>
+							Login
+						</Label>
 					</div>
 					<div className="news-publish-icon">
 						<Icon name="paper plane outline" size="big" />
@@ -62,6 +82,7 @@ class Home extends Component {
 				<WeatherDetailsContainer />
 				<NewsDetailsFilter />
 				<NewsDetailsTable />
+				<LoginForm loginModalOpen={onLoginBtnClick} modalClose={this.onCloseLoginModel} />
 			</div>
 		);
 	}

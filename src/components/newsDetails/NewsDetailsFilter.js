@@ -61,7 +61,6 @@ class NewsDetailsFilter extends React.Component {
 					options={categoryOptions}
 					placeholder="Select Category"
 					selection
-					defaultValue={categoryOptions[0].text}
 					onChange={this.onCategoryChange}
 					value={categorySelectedValue ? categorySelectedValue : categoryOptions[0].text}
 				/>

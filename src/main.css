@@ -2,3 +2,4 @@
 @import './components/home/home.less';
 @import './components/weatherDetails/weatherDetails.less';
 @import './components/newsDetails/newsDetails.less';
+@import './components/loginForm/loginForm.css';
