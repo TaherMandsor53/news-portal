@@ -20,8 +20,8 @@ const fetchNewsDetails = (category, publishedDate) => {
 
 const storeUserDetails = (name, email, mobile, password) => {
 	console.log('User:', name);
-	const URL = '';
-	return axios.post(URL, name, email, mobile, password);
+	const URL = baseURL + '/api/userDetails';
+  return axios.post(URL, { name, email, mobile, password });
 };
 
 export default {
