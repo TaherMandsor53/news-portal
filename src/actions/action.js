@@ -5,3 +5,11 @@ export function requestWeatherDetails() {
 		type: types.WEATHER_DETAILS_REQUEST,
 	};
 }
+
+export function requestNewsDetails(category, publishedDate) {
+	return {
+		type: types.NEWS_DETAILS_REQUEST,
+		category,
+		publishedDate,
+	};
+}

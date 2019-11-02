@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal, Label } from 'semantic-ui-react';
 
 class PublishNews extends React.Component {
 	constructor(props) {
@@ -7,7 +8,12 @@ class PublishNews extends React.Component {
 	}
 
 	render() {
-		return <div></div>;
+		const { showPublishModal, onPublishNewsClose } = this.props;
+		return (
+			<div>
+				<Modal open={showPublishModal} onClose={onPublishNewsClose} closeIcon></Modal>
+			</div>
+		);
 	}
 }
 

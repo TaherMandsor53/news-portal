@@ -5,6 +5,7 @@ import { headLine1, headLine2, headLine3, content1, content2, content3 } from '.
 import NewsDetailsFilter from '../newsDetails/NewsDetailsFilter';
 import NewsDetailsTable from '../newsDetails/NewsDetailsTable';
 import LoginForm from '../loginForm/LoginForm';
+import PublishNews from '../publishNews/PublishNews';
 import { Segment, Icon, Label } from 'semantic-ui-react';
 
 class Home extends Component {
@@ -12,9 +13,12 @@ class Home extends Component {
 		super(props);
 		this.state = {
 			onLoginBtnClick: false,
+			onPublishBtnClick: false,
 		};
 		this.showLoginModel = this.showLoginModel.bind(this);
 		this.onCloseLoginModel = this.onCloseLoginModel.bind(this);
+		this.showPublishNewsModel = this.showPublishNewsModel.bind(this);
+		this.onClosePublishNewsModel = this.onClosePublishNewsModel.bind(this);
 	}
 	showLoginModel() {
 		this.setState({ onLoginBtnClick: true });
@@ -23,8 +27,16 @@ class Home extends Component {
 	onCloseLoginModel() {
 		this.setState({ onLoginBtnClick: false });
 	}
+
+	showPublishNewsModel() {
+		this.setState({ onPublishBtnClick: true });
+	}
+
+	onClosePublishNewsModel() {
+		this.setState({ onPublishBtnClick: false });
+	}
 	render() {
-		const { onLoginBtnClick } = this.state;
+		const { onLoginBtnClick, onPublishBtnClick } = this.state;
 		return (
 			<div>
 				<Segment>
@@ -38,7 +50,9 @@ class Home extends Component {
 					</div>
 					<div className="news-publish-icon">
 						<Icon name="paper plane outline" size="big" />
-						<Label className="news-publish-label">Publish News</Label>
+						<Label className="news-publish-label" onClick={this.showPublishNewsModel}>
+							Publish News
+						</Label>
 					</div>
 				</Segment>
 				<div className="carousel-slide">
@@ -83,6 +97,7 @@ class Home extends Component {
 				<NewsDetailsFilter />
 				<NewsDetailsTable />
 				<LoginForm loginModalOpen={onLoginBtnClick} modalClose={this.onCloseLoginModel} />
+				<PublishNews showPublishModal={onPublishBtnClick} onPublishNewsClose={this.onClosePublishNewsModel} />
 			</div>
 		);
 	}
