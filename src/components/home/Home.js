@@ -3,7 +3,6 @@ import { Carousel } from 'react-responsive-carousel';
 import WeatherDetailsContainer from '../../container/WeatherDetailsContainer';
 import { headLine1, headLine2, headLine3, content1, content2, content3 } from '../../constants/constants';
 import NewsDetailsContainer from '../../container/NewsDetailsContainer';
-import RegisterUserDetailsContainer from '../../container/RegisterUserDetailsContainer';
 import LoginForm from '../loginForm/LoginForm';
 import PublishNews from '../publishNews/PublishNews';
 import { Segment, Icon, Label } from 'semantic-ui-react';
@@ -95,7 +94,6 @@ class Home extends Component {
 				</div>
 				<WeatherDetailsContainer />
 				<NewsDetailsContainer />
-				<RegisterUserDetailsContainer />
 				<LoginForm loginModalOpen={onLoginBtnClick} modalClose={this.onCloseLoginModel} />
 				<PublishNews showPublishModal={onPublishBtnClick} onPublishNewsClose={this.onClosePublishNewsModel} />
 			</div>
