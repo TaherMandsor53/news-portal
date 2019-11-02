@@ -13,3 +13,13 @@ export function requestNewsDetails(category, publishedDate) {
 		publishedDate,
 	};
 }
+
+export function sendUserDetails(name, email, mobile, password) {
+	return {
+		type: types.REGISTER_USER_DETAILS_REQUEST,
+		name,
+		email,
+		mobile,
+		password,
+	};
+}

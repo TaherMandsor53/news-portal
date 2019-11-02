@@ -8,34 +8,35 @@ class NewsDetailsTable extends React.Component {
 	}
 
 	render() {
+		const { data } = this.props;
+		const transformData = data && data.slice(0, 2);
 		return (
 			<div>
-				<Table celled>
-					<Table.Header>
-						<Table.Row>
-							<Table.HeaderCell>Published Date</Table.HeaderCell>
-							<Table.HeaderCell>Headline</Table.HeaderCell>
-							<Table.HeaderCell>News Content</Table.HeaderCell>
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						<Table.Row>
-							<Table.Cell>First</Table.Cell>
-							<Table.Cell>Cell</Table.Cell>
-							<Table.Cell>Cell</Table.Cell>
-						</Table.Row>
-						<Table.Row>
-							<Table.Cell>Cell</Table.Cell>
-							<Table.Cell>Cell</Table.Cell>
-							<Table.Cell>Cell</Table.Cell>
-						</Table.Row>
-						<Table.Row>
-							<Table.Cell>Cell</Table.Cell>
-							<Table.Cell>Cell</Table.Cell>
-							<Table.Cell>Cell</Table.Cell>
-						</Table.Row>
-					</Table.Body>
-				</Table>
+				{data && data.length > 0 ? (
+					<Table celled>
+						<Table.Header>
+							<Table.Row>
+								<Table.HeaderCell>Published Date</Table.HeaderCell>
+								<Table.HeaderCell>Headline</Table.HeaderCell>
+								<Table.HeaderCell>News Content</Table.HeaderCell>
+							</Table.Row>
+						</Table.Header>
+						<Table.Body>
+							{transformData.map((row, key) => {
+								let publishedDate = row.publishedAt.split(' ')[0];
+								return (
+									<Table.Row>
+										<Table.Cell>{publishedDate}</Table.Cell>
+										<Table.Cell>{row.title}</Table.Cell>
+										<Table.Cell>{row.content}</Table.Cell>
+									</Table.Row>
+								);
+							})}
+						</Table.Body>
+					</Table>
+				) : (
+					''
+				)}
 			</div>
 		);
 	}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Message, Segment, Modal, ModalHeader, Icon, Label } from 'semantic-ui-react';
 import RegisterUser from './RegisterUser';
-
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // // import { requestUserDetails } from '../../action/action';

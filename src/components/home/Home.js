@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import WeatherDetailsContainer from '../../container/NewsDetailsContainer';
+import WeatherDetailsContainer from '../../container/WeatherDetailsContainer';
 import { headLine1, headLine2, headLine3, content1, content2, content3 } from '../../constants/constants';
-import NewsDetailsFilter from '../newsDetails/NewsDetailsFilter';
-import NewsDetailsTable from '../newsDetails/NewsDetailsTable';
+import NewsDetailsContainer from '../../container/NewsDetailsContainer';
+import RegisterUserDetailsContainer from '../../container/RegisterUserDetailsContainer';
 import LoginForm from '../loginForm/LoginForm';
 import PublishNews from '../publishNews/PublishNews';
 import { Segment, Icon, Label } from 'semantic-ui-react';
@@ -94,8 +94,8 @@ class Home extends Component {
 					</Carousel>
 				</div>
 				<WeatherDetailsContainer />
-				<NewsDetailsFilter />
-				<NewsDetailsTable />
+				<NewsDetailsContainer />
+				<RegisterUserDetailsContainer />
 				<LoginForm loginModalOpen={onLoginBtnClick} modalClose={this.onCloseLoginModel} />
 				<PublishNews showPublishModal={onPublishBtnClick} onPublishNewsClose={this.onClosePublishNewsModel} />
 			</div>

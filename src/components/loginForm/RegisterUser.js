@@ -40,6 +40,7 @@ export default class RegisterUser extends Component {
     this.registeredModalClose = this.registeredModalClose.bind(this);
   }
 
+
   //setting User name
   onUserNameChange(event) {
     this.setState({ userName: event.target.value });
@@ -116,6 +117,7 @@ export default class RegisterUser extends Component {
     this.validateMobileNo();
     this.validatePass();
     const { userName, email, mobileNo, pass } = this.state;
+    
     this.setState({
       userDataObject: {
         userName: this.state.userName,
@@ -132,6 +134,9 @@ export default class RegisterUser extends Component {
     ) {
       this.setState({ registeredModalOpen: true });
     }
+
+   const {sendUserDetails} = this.props;
+   sendUserDetails(userName,email,mobileNo,pass);
   }
 
   //on Close click

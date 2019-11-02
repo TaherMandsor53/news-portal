@@ -2,59 +2,63 @@ import React from 'react';
 import { Dropdown, Button } from 'semantic-ui-react';
 import { DatePicker } from 'antd';
 import moment from 'moment';
+import NewsDetailsTable from './NewsDetailsTable';
 
 const categoryOptions = [
 	{
-		key: 'general',
 		text: 'General News',
-		value: 'General News',
+		value: 'GENE',
 	},
 	{
-		key: 'business',
 		text: 'Business',
-		value: 'Business',
+		value: 'BUSI',
 	},
 	{
-		key: 'education',
 		text: 'Education',
-		value: 'Education',
+		value: 'EDUC',
 	},
 	{
-		key: 'technology',
-		text: 'Technology',
-		value: 'Technology',
-	},
-	{
-		key: 'sports',
-		text: 'Sports',
-		value: 'Sports',
+		text: 'Trending',
+		value: 'TREN',
 	},
 ];
 
 class NewsDetailsFilter extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { categorySelectedValue: '' };
+		this.state = {
+			categorySelectedValue: categoryOptions[0].value,
+			dateSelectedValue: '',
+		};
 		this.onDateChange = this.onDateChange.bind(this);
 		this.onCategoryChange = this.onCategoryChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 	}
 
+	componentDidMount() {
+		const { requestNewsDetails } = this.props;
+		const { categorySelectedValue, dateSelectedValue } = this.state;
+		requestNewsDetails(categorySelectedValue, dateSelectedValue);
+	}
+
 	onDateChange(date) {
-		console.log('Date Value selected:', date._d);
+		this.setState({ dateSelectedValue: moment(date._d).format('DD-MM-YYYY') });
 	}
 
 	onCategoryChange(event, data) {
 		this.setState({ categorySelectedValue: data.value });
-		console.log('Category Value:', data);
 	}
 
 	onSubmit() {
-		console.log('OK Click');
+		const { requestNewsDetails } = this.props;
+		const { categorySelectedValue, dateSelectedValue } = this.state;
+		requestNewsDetails(categorySelectedValue, dateSelectedValue);
 	}
 
 	render() {
 		const { categorySelectedValue } = this.state;
+		const { newsDetailsData, isLoading } = this.props;
+		console.log('News Details:', newsDetailsData);
 		return (
 			<div>
 				<Dropdown
@@ -62,10 +66,22 @@ class NewsDetailsFilter extends React.Component {
 					placeholder="Select Category"
 					selection
 					onChange={this.onCategoryChange}
-					value={categorySelectedValue ? categorySelectedValue : categoryOptions[0].text}
+					value={categorySelectedValue}
 				/>
-				<DatePicker onChange={this.onDateChange} allowClear={false} />
+				<DatePicker
+					onChange={this.onDateChange}
+					allowClear={false}
+					format={'DD-MMM-YYYY'}
+					defaultValue={moment().subtract(1, 'months')}
+				/>
 				<Button onClick={this.onSubmit}>OK</Button>
+				{isLoading ? (
+					<div className="loading-img">
+						<img className="image" src={require('../../assets/LOADING.gif')} alt="" />
+					</div>
+				) : (
+					<NewsDetailsTable data={newsDetailsData} />
+				)}
 			</div>
 		);
 	}

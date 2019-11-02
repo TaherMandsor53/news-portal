@@ -17,7 +17,6 @@ class WeatherDetailsComponent extends Component {
 		const roundTemperatureVal = Math.round(temperature) + ' °C';
 		const sunRiseDetails = weatherDetailsData.sys && weatherDetailsData.sys.sunrise;
 		const sunSetDetails = weatherDetailsData.sys && weatherDetailsData.sys.sunset;
-		console.log('Weather Details:', weatherDetailsData);
 		const sunriseTime = new Date(sunRiseDetails * 1000).toLocaleTimeString('en-US');
 		const sunsetTime = new Date(sunSetDetails * 1000).toLocaleTimeString('en-US');
 		return (
