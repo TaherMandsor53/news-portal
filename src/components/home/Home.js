@@ -12,7 +12,7 @@ class Home extends Component {
 			onLoginBtnClick: false,
 			onPublishBtnClick: false,
 			loginStatus: '',
-			showPublishArticle: false,
+			onPublishArticleClick: false,
 		};
 		this.showLoginModel = this.showLoginModel.bind(this);
 		this.onCloseLoginModel = this.onCloseLoginModel.bind(this);
@@ -44,14 +44,14 @@ class Home extends Component {
 	}
 
 	showPublishNewsArticle() {
-		this.setState({ showPublishArticle: true });
+		this.setState({ onPublishArticleClick: true });
 	}
 
 	onClosePublishNewsArticle() {
-		this.setState({ showPublishArticle: false });
+		this.setState({ onPublishArticleClick: false });
 	}
 	render() {
-		const { onLoginBtnClick, onPublishBtnClick, loginStatus } = this.state;
+		const { onLoginBtnClick, onPublishBtnClick, loginStatus, onPublishArticleClick } = this.state;
 		return (
 			<div>
 				<Segment>
@@ -74,7 +74,9 @@ class Home extends Component {
 					{!loginStatus && (
 						<div className="news-publish-icon">
 							<Icon name="announcement" size="big" />
-							<Label className="news-publish-label">Publish News</Label>
+							<Label className="news-publish-label" onClick={this.showPublishNewsArticle}>
+								Publish News
+							</Label>
 						</div>
 					)}
 				</Segment>
@@ -124,8 +126,8 @@ class Home extends Component {
 					loginStatus={this.loginStatus}
 					showPublishModal={onPublishBtnClick}
 					onPublishNewsClose={this.onClosePublishNewsModel}
-					showPublishNewsArticle={this.showPublishNewsArticle}
-					onClosePublishNewsArticle={this.showPublishNewsArticle}
+					showPublishNewsArticle={onPublishArticleClick}
+					onClosePublishNewsArticle={this.onClosePublishNewsArticle}
 				/>
 			</div>
 		);

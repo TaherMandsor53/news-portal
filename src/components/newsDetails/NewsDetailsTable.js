@@ -35,7 +35,7 @@ class NewsDetailsTable extends React.Component {
 						</Table.Body>
 					</Table>
 				) : (
-					''
+					<h3 className="no-content">Currently no news available for selected time period.</h3>
 				)}
 			</div>
 		);

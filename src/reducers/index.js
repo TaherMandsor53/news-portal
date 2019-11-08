@@ -5,6 +5,7 @@ import newsDetails from './NewsDetailsReducer';
 import registerUserDetails from './RegisterUserDetailsReducer';
 import userDetails from './UserDetailsReducer';
 import publishNewsDetails from './PublishNewsDetailReducer';
+import getNewsDetails from './NewsArticleReducer';
 
 export default combineReducers({
 	weatherDetails,
@@ -12,4 +13,5 @@ export default combineReducers({
 	registerUserDetails,
 	userDetails,
 	publishNewsDetails,
+	getNewsDetails,
 });

@@ -38,3 +38,9 @@ export function sendNewsDetails(title, content, createdAt) {
 		createdAt,
 	};
 }
+
+export function getAllNewsDetails() {
+	return {
+		type: types.GETALL_NEWSDETAILS_REQUEST,
+	};
+}

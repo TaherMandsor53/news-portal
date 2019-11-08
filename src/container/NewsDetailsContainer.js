@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { requestNewsDetails, requestUserDetails, sendNewsDetails } from '../actions/action';
+import { requestNewsDetails, requestUserDetails, sendNewsDetails, getAllNewsDetails } from '../actions/action';
 
 import CommonComponent from '../components/CommonComponent';
 
@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
 	isLoading: state.newsDetails.isFetching,
 	userDetailsData: state.userDetails.userDetailsData,
 	publishNewsDetailsData: state.publishNewsDetails.publishNewsDetailsData,
+	getNewsDetailsData: state.getNewsDetails.getNewsDetailsData,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -17,6 +18,7 @@ const mapDispatchToProps = dispatch =>
 			requestNewsDetails,
 			requestUserDetails,
 			sendNewsDetails,
+			getAllNewsDetails,
 		},
 		dispatch,
 	);

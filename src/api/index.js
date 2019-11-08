@@ -34,10 +34,16 @@ const storeNewsDetails = (title, content, formatcreatedAt, city = 'Pune', status
 	return axios.post(URL, { title, content, createdAt, status, city });
 };
 
+const fetchAllNewsDetails = () => {
+	const URL = `${baseURL}/getAllNews`;
+	return axios.get(URL);
+};
+
 export default {
 	fetchWeatherDetails,
 	fetchNewsDetails,
 	storeUserDetails,
 	fetchUserDetails,
 	storeNewsDetails,
+	fetchAllNewsDetails,
 };
