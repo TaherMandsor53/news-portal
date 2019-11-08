@@ -3,4 +3,5 @@
 @import './components/weatherDetails/weatherDetails.less';
 @import './components/newsDetails/newsDetails.less';
 @import './components/loginForm/loginForm.css';
-@import './components/publishNews/publishNews.less';
+@import './components/requestPublishNews/requestPublishNews.less';
+@import './components/publishNewsArticle/PublishNewsArticle.less';

@@ -134,7 +134,6 @@ export default class RegisterUser extends Component {
     ) {
       this.setState({ registeredModalOpen: true });
     }
-
    const {sendUserDetails} = this.props;
    sendUserDetails(userName,email,mobileNo,pass);
   }

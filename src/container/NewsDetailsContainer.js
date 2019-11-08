@@ -1,18 +1,22 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { requestNewsDetails } from '../actions/action';
+import { requestNewsDetails, requestUserDetails, sendNewsDetails } from '../actions/action';
 
-import newsDetailsFilter from '../components/newsDetails/NewsDetailsFilter';
+import CommonComponent from '../components/CommonComponent';
 
 const mapStateToProps = state => ({
 	newsDetailsData: state.newsDetails.newsDetailsData,
 	isLoading: state.newsDetails.isFetching,
+	userDetailsData: state.userDetails.userDetailsData,
+	publishNewsDetailsData: state.publishNewsDetails.publishNewsDetailsData,
 });
 
 const mapDispatchToProps = dispatch =>
 	bindActionCreators(
 		{
 			requestNewsDetails,
+			requestUserDetails,
+			sendNewsDetails,
 		},
 		dispatch,
 	);
@@ -20,4 +24,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
-)(newsDetailsFilter);
+)(CommonComponent);

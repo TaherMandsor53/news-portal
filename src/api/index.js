@@ -18,14 +18,26 @@ const fetchNewsDetails = (category, publishedDate) => {
 	return axios.get(URL);
 };
 
-const storeUserDetails = (name, email, mobile, password) => {
-	console.log('User:', name);
-	const URL = baseURL + '/api/userDetails';
-  return axios.post(URL, { name, email, mobile, password });
+const storeUserDetails = (userName, email, firstName, password, userType = 'User') => {
+	const URL = `${baseURL}/api/userDetails`;
+	return axios.post(URL, { userName, email, firstName, password, userType });
+};
+
+const fetchUserDetails = () => {
+	const URL = `${baseURL}/api/userDetails`;
+	return axios.get(URL);
+};
+
+const storeNewsDetails = (title, content, formatcreatedAt, city = 'Pune', status = 'Submitted') => {
+	const createdAt = formatcreatedAt && moment(formatcreatedAt).format('DD-MM-YYYY hh:mm:ss');
+	const URL = `${baseURL}/api/newsDetails`;
+	return axios.post(URL, { title, content, createdAt, status, city });
 };
 
 export default {
 	fetchWeatherDetails,
 	fetchNewsDetails,
 	storeUserDetails,
+	fetchUserDetails,
+	storeNewsDetails,
 };

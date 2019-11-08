@@ -22,20 +22,14 @@ class LoginForm extends Component {
 		this.onRegisterClose = this.onRegisterClose.bind(this);
 		this.emailHandleChange = this.emailHandleChange.bind(this);
 		this.passHandleChange = this.passHandleChange.bind(this);
-		//this.validateUser = this.validateUser.bind(this);
+		this.validateUser = this.validateUser.bind(this);
 		this.onLoginClick = this.onLoginClick.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	const { requestUserDetails } = this.props;
-	// 	requestUserDetails();
-	// }
-
-	// componentWillReceiveProps(nextProps){
-	//   if(nextProps.userDetailsData !== this.props.userDetailsData){
-
-	//   }
-	// }
+	componentDidMount() {
+		const { requestUserDetails } = this.props;
+		requestUserDetails();
+	}
 
 	emailHandleChange(event) {
 		this.setState({ emailValue: event.target.value });
@@ -45,19 +39,19 @@ class LoginForm extends Component {
 		this.setState({ passValue: event.target.value });
 	}
 
-	// validateUser() {
-	// 	const { userDetailsData } = this.props;
-	// 	const { passValue, emailValue } = this.state;
-	// 	const userEmailId = userDetailsData[0] && userDetailsData[0].emailId;
-	// 	const userPass = userDetailsData[0] && userDetailsData[0].password;
-	// 	if (emailValue === userEmailId && passValue === userPass && emailValue.length !== 0 && passValue.length !== 0) {
-	// 		this.setState({ loggedIn: true });
-	// 	} else {
-	// 		this.setState({ errorCheck: true, label: 'Please enter valid UserName/Password', loggedIn: false });
-	// 	}
-	// 	const { modalClose } = this.props;
-	// 	modalClose();
-	// }
+	validateUser() {
+		const { userDetailsData } = this.props;
+		const { passValue, emailValue } = this.state;
+		const loginStatus = userDetailsData.find(item =>
+			item.email === emailValue && item.password === passValue ? true : false,
+		);
+		if (loginStatus) {
+			this.setState({ loggedIn: true });
+			this.Reset();
+		} else {
+			this.setState({ errorCheck: true, label: 'Please enter valid UserName/Password', loggedIn: false });
+		}
+	}
 
 	onLoginClick() {
 		this.validateUser();
@@ -79,9 +73,10 @@ class LoginForm extends Component {
 		this.setState({ registerModalOpen: false });
 	}
 	render() {
-		const { loginModalOpen } = this.props;
-		const { registerModalOpen, errorCheck } = this.state;
-
+		const { loginModalOpen, userDetailsData, loginStatus } = this.props;
+		const { registerModalOpen, errorCheck, loggedIn } = this.state;
+		loginStatus(loggedIn);
+		console.log('UserDetails :', userDetailsData);
 		return (
 			<div>
 				<Modal open={loginModalOpen} closeIcon onClose={this.Reset}>

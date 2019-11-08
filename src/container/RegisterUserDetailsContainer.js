@@ -4,7 +4,6 @@ import { sendUserDetails } from '../actions/action';
 import RegisterUser from '../components/loginForm/RegisterUser';
 
 const mapStateToProps = state => {
-	console.log('In Container');
 	return {
 		registerUserDetailsData: state.registerUserDetails.registerUserDetailsData,
 	};

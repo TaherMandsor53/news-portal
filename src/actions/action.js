@@ -23,3 +23,18 @@ export function sendUserDetails(name, email, mobile, password) {
 		password,
 	};
 }
+
+export function requestUserDetails() {
+	return {
+		type: types.USER_DETAILS_REQUEST,
+	};
+}
+
+export function sendNewsDetails(title, content, createdAt) {
+	return {
+		type: types.SEND_NEWS_DETAILS_REQUEST,
+		title,
+		content,
+		createdAt,
+	};
+}

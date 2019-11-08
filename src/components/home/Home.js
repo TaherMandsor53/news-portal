@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import WeatherDetailsContainer from '../../container/WeatherDetailsContainer';
 import { headLine1, headLine2, headLine3, content1, content2, content3 } from '../../constants/constants';
-import NewsDetailsContainer from '../../container/NewsDetailsContainer';
-import LoginForm from '../loginForm/LoginForm';
-import PublishNews from '../publishNews/PublishNews';
+import LoginForm from '../../container/NewsDetailsContainer';
 import { Segment, Icon, Label } from 'semantic-ui-react';
 
 class Home extends Component {
@@ -13,12 +11,22 @@ class Home extends Component {
 		this.state = {
 			onLoginBtnClick: false,
 			onPublishBtnClick: false,
+			loginStatus: '',
+			showPublishArticle: false,
 		};
 		this.showLoginModel = this.showLoginModel.bind(this);
 		this.onCloseLoginModel = this.onCloseLoginModel.bind(this);
 		this.showPublishNewsModel = this.showPublishNewsModel.bind(this);
 		this.onClosePublishNewsModel = this.onClosePublishNewsModel.bind(this);
+		this.showPublishNewsArticle = this.showPublishNewsArticle.bind(this);
+		this.onClosePublishNewsArticle = this.onClosePublishNewsArticle.bind(this);
+		this.loginStatus = this.loginStatus.bind(this);
 	}
+
+	loginStatus(loggedIn) {
+		this.setState({ loginStatus: loggedIn });
+	}
+
 	showLoginModel() {
 		this.setState({ onLoginBtnClick: true });
 	}
@@ -34,8 +42,16 @@ class Home extends Component {
 	onClosePublishNewsModel() {
 		this.setState({ onPublishBtnClick: false });
 	}
+
+	showPublishNewsArticle() {
+		this.setState({ showPublishArticle: true });
+	}
+
+	onClosePublishNewsArticle() {
+		this.setState({ showPublishArticle: false });
+	}
 	render() {
-		const { onLoginBtnClick, onPublishBtnClick } = this.state;
+		const { onLoginBtnClick, onPublishBtnClick, loginStatus } = this.state;
 		return (
 			<div>
 				<Segment>
@@ -44,15 +60,23 @@ class Home extends Component {
 					<div className="login-icon">
 						<Icon name="user outline" size="big" />
 						<Label className="login-label" onClick={this.showLoginModel}>
-							Login
+							{loginStatus ? 'Logout' : 'login'}
 						</Label>
 					</div>
-					<div className="news-publish-icon">
-						<Icon name="paper plane outline" size="big" />
-						<Label className="news-publish-label" onClick={this.showPublishNewsModel}>
-							Publish News
-						</Label>
-					</div>
+					{!loginStatus && (
+						<div className="news-publish-icon">
+							<Icon name="paper plane outline" size="big" />
+							<Label className="news-publish-label" onClick={this.showPublishNewsModel}>
+								Submit News
+							</Label>
+						</div>
+					)}
+					{!loginStatus && (
+						<div className="news-publish-icon">
+							<Icon name="announcement" size="big" />
+							<Label className="news-publish-label">Publish News</Label>
+						</div>
+					)}
 				</Segment>
 				<div className="carousel-slide">
 					<Carousel autoPlay={true} interval={5000} showArrows={false} showStatus={false} showThumbs={false}>
@@ -93,9 +117,16 @@ class Home extends Component {
 					</Carousel>
 				</div>
 				<WeatherDetailsContainer />
-				<NewsDetailsContainer />
-				<LoginForm loginModalOpen={onLoginBtnClick} modalClose={this.onCloseLoginModel} />
-				<PublishNews showPublishModal={onPublishBtnClick} onPublishNewsClose={this.onClosePublishNewsModel} />
+
+				<LoginForm
+					loginModalOpen={onLoginBtnClick}
+					modalClose={this.onCloseLoginModel}
+					loginStatus={this.loginStatus}
+					showPublishModal={onPublishBtnClick}
+					onPublishNewsClose={this.onClosePublishNewsModel}
+					showPublishNewsArticle={this.showPublishNewsArticle}
+					onClosePublishNewsArticle={this.showPublishNewsArticle}
+				/>
 			</div>
 		);
 	}
