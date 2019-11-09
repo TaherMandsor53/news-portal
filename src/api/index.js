@@ -39,6 +39,10 @@ const fetchAllNewsDetails = () => {
 	return axios.get(URL);
 };
 
+// const fetchPublishNewsArticle = () => {
+// 	const URL = `${baseURL}/`
+// }
+
 export default {
 	fetchWeatherDetails,
 	fetchNewsDetails,

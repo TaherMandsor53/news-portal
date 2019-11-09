@@ -13,6 +13,7 @@ class Home extends Component {
 			onPublishBtnClick: false,
 			loginStatus: '',
 			onPublishArticleClick: false,
+			userType: '',
 		};
 		this.showLoginModel = this.showLoginModel.bind(this);
 		this.onCloseLoginModel = this.onCloseLoginModel.bind(this);
@@ -23,8 +24,8 @@ class Home extends Component {
 		this.loginStatus = this.loginStatus.bind(this);
 	}
 
-	loginStatus(loggedIn) {
-		this.setState({ loginStatus: loggedIn });
+	loginStatus(loggedIn, userType) {
+		this.setState({ loginStatus: loggedIn, userType: userType });
 	}
 
 	showLoginModel() {
@@ -51,7 +52,7 @@ class Home extends Component {
 		this.setState({ onPublishArticleClick: false });
 	}
 	render() {
-		const { onLoginBtnClick, onPublishBtnClick, loginStatus, onPublishArticleClick } = this.state;
+		const { onLoginBtnClick, onPublishBtnClick, loginStatus, onPublishArticleClick, userType } = this.state;
 		return (
 			<div>
 				<Segment>
@@ -63,7 +64,7 @@ class Home extends Component {
 							{loginStatus ? 'Logout' : 'login'}
 						</Label>
 					</div>
-					{!loginStatus && (
+					{loginStatus && (
 						<div className="news-publish-icon">
 							<Icon name="paper plane outline" size="big" />
 							<Label className="news-publish-label" onClick={this.showPublishNewsModel}>
@@ -71,7 +72,7 @@ class Home extends Component {
 							</Label>
 						</div>
 					)}
-					{!loginStatus && (
+					{loginStatus && userType === 'Admin' && (
 						<div className="news-publish-icon">
 							<Icon name="announcement" size="big" />
 							<Label className="news-publish-label" onClick={this.showPublishNewsArticle}>

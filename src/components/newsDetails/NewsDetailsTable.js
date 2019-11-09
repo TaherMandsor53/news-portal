@@ -9,7 +9,7 @@ class NewsDetailsTable extends React.Component {
 
 	render() {
 		const { data } = this.props;
-		const transformData = data && data.slice(0, 2);
+
 		return (
 			<div>
 				{data && data.length > 0 ? (
@@ -22,7 +22,7 @@ class NewsDetailsTable extends React.Component {
 							</Table.Row>
 						</Table.Header>
 						<Table.Body>
-							{transformData.map((row, key) => {
+							{data.map((row, key) => {
 								let publishedDate = row.publishedAt.split(' ')[0];
 								return (
 									<Table.Row>

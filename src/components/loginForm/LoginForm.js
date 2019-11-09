@@ -15,6 +15,7 @@ class LoginForm extends Component {
 			loggedIn: false,
 			errorCheck: false,
 			label: '',
+			userType: '',
 		};
 
 		this.Reset = this.Reset.bind(this);
@@ -45,8 +46,9 @@ class LoginForm extends Component {
 		const loginStatus = userDetailsData.find(item =>
 			item.email === emailValue && item.password === passValue ? true : false,
 		);
+		console.log('ogin Status:', loginStatus);
 		if (loginStatus) {
-			this.setState({ loggedIn: true });
+			this.setState({ loggedIn: true, userType: loginStatus.userType });
 			this.Reset();
 		} else {
 			this.setState({ errorCheck: true, label: 'Please enter valid UserName/Password', loggedIn: false });
@@ -74,8 +76,8 @@ class LoginForm extends Component {
 	}
 	render() {
 		const { loginModalOpen, userDetailsData, loginStatus } = this.props;
-		const { registerModalOpen, errorCheck, loggedIn } = this.state;
-		loginStatus(loggedIn);
+		const { registerModalOpen, errorCheck, loggedIn, userType } = this.state;
+		loginStatus(loggedIn, userType);
 		console.log('UserDetails :', userDetailsData);
 		return (
 			<div>

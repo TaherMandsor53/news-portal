@@ -16,15 +16,8 @@ class PublishNewsArticle extends React.Component {
 		const { showPublishNewsArticle, onClosePublishNewsArticle, getNewsDetailsData } = this.props;
 		console.log('Get All Data:', getNewsDetailsData);
 		const transformGetNewsDetails =
-			getNewsDetailsData &&
-			getNewsDetailsData.map(item => {
-				return {
-					createdDate: item.createdAt,
-					title: item.title,
-					content: item.content,
-					status: item.status,
-				};
-			});
+			getNewsDetailsData && getNewsDetailsData.filter(item => item.status === 'Submitted');
+		const splitData = transformGetNewsDetails && transformGetNewsDetails.slice(0, 3);
 		console.log('Transform Data:', transformGetNewsDetails);
 		return (
 			<div>
@@ -34,20 +27,19 @@ class PublishNewsArticle extends React.Component {
 						<Table celled className="Publish-news-table">
 							<Table.Header>
 								<Table.Row>
-									<Table.HeaderCell>Published Date</Table.HeaderCell>
-									<Table.HeaderCell>Headline</Table.HeaderCell>
+									<Table.HeaderCell className="publish-date-row">Published Date</Table.HeaderCell>
+									<Table.HeaderCell className="headline-row">Headline</Table.HeaderCell>
 									<Table.HeaderCell>News Content</Table.HeaderCell>
-									<Table.HeaderCell>Approved</Table.HeaderCell>
+									<Table.HeaderCell className="approve-btn-row">Approved</Table.HeaderCell>
 								</Table.Row>
 							</Table.Header>
 							<Table.Body>
-								{transformGetNewsDetails &&
-									transformGetNewsDetails.map((row, key) => {
-										//let publishedDate = row.createdDate.split('')[0];
-
+								{splitData &&
+									splitData.map((row, key) => {
+										let publishedDate = row && row.createdAt.split(' ')[0];
 										return (
 											<Table.Row>
-												<Table.Cell>publishedDate</Table.Cell>
+												<Table.Cell>{publishedDate}</Table.Cell>
 												<Table.Cell>{row.title}</Table.Cell>
 												<Table.Cell>{row.content}</Table.Cell>
 												<Table.Cell>

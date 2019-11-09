@@ -44,3 +44,10 @@ export function getAllNewsDetails() {
 		type: types.GETALL_NEWSDETAILS_REQUEST,
 	};
 }
+
+export function SetPublishNews(status) {
+	return {
+		type: types.PUBLISH_NEWS_ARTICLE_REQUEST,
+		status,
+	};
+}
